@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Employer Dashboard</h3>
+  <a href="{{ url_for('post_job') }}" class="btn btn-success mb-3">Post New Job</a>
+  <h5>Your Jobs</h5>
+  {% for job in jobs %}
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5>{{ job.title }}</h5>
+        <a href="{{ url_for('view_applications', job_id=job.id) }}" class="btn btn-sm btn-outline-primary">View Applications</a>
+      </div>
+    </div>
+  {% else %}
+    <p>No jobs posted yet.</p>
+  {% endfor %}
+{% endblock %}

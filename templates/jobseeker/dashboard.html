@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>My Applications</h3>
+  {% for a in applications %}
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5>{{ a.job.title }}</h5>
+        <p>{{ a.cover_letter }}</p>
+        <small>Applied {{ a.applied_at.strftime('%Y-%m-%d') }}</small>
+      </div>
+    </div>
+  {% else %}
+    <p>You haven't applied to any jobs yet.</p>
+  {% endfor %}
+{% endblock %}

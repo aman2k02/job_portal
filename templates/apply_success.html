@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="alert alert-success">
+    You applied to <strong>{{ job.title }}</strong>. The employer will review your application.
+  </div>
+  <a href="{{ url_for('jobseeker_dashboard') }}" class="btn btn-outline-primary">Your Applications</a>
+{% endblock %}

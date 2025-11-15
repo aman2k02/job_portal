@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Admin Dashboard</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card p-3">
+        <h5>Total Jobs</h5>
+        <h2>{{ total_jobs }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <h5>Employers</h5>
+        <h2>{{ total_employers }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <h5>Jobseekers</h5>
+        <h2>{{ total_jobseekers }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3">
+        <h5>Jobs (Last day/week/month/year)</h5>
+        <p>{{ jobs_day }} / {{ jobs_week }} / {{ jobs_month }} / {{ jobs_year }}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <h5>Manage Users & Jobs (quick links)</h5>
+  <a href="{{ url_for('job_list') }}">View Jobs</a>
+{% endblock %}

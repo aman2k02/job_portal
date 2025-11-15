@@ -1,0 +1,61 @@
+<style>
+/* small helper to keep icons-only collapsed */
+.side {
+  width: 220px;
+  transition: width .2s;
+}
+.side.collapsed { width: 56px; }
+.side .nav-link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side .icon { width:28px; display:inline-block; text-align:center; }
+@media (max-width: 767px) {
+  .side { position: fixed; z-index: 1030; left: -220px; }
+  .side.show { left:0; }
+  .content-area { margin-left: 0 !important; }
+}
+</style>
+
+<nav id="sidebar" class="bg-dark text-white p-2 side">
+  <div class="d-flex align-items-center mb-3 px-2">
+    <strong class="ms-1 d-none d-md-inline">Menu</strong>
+    <button id="toggle" class="btn btn-sm btn-light btn-toggle ms-auto d-md-none">☰</button>
+  </div>
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <a class="nav-link text-white" href="{{ url_for('index') }}">
+        <span class="icon">🏠</span>
+        <span class="d-none d-md-inline"> Home</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="{{ url_for('job_list') }}">
+        <span class="icon">💼</span>
+        <span class="d-none d-md-inline"> Jobs</span>
+      </a>
+    </li>
+
+    {% if current_user.is_authenticated and current_user.role == 'employer' %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ url_for('employer_dashboard') }}">
+          <span class="icon">👔</span>
+          <span class="d-none d-md-inline"> Employer</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if current_user.is_authenticated and current_user.role == 'jobseeker' %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ url_for('jobseeker_dashboard') }}">
+          <span class="icon">🧑‍💻</span>
+          <span class="d-none d-md-inline"> Jobseeker</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if current_user.is_authenticated and current_user.role == 'admin' %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ url_for('admin_dashboard') }}">
+          <span class="icon">📊</span>
+          <span class="d-none d-md-inline"> Admin</span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>{{ job.title }}</h3>
+  <p><strong>Location:</strong> {{ job.location }}</p>
+  <p>{{ job.description }}</p>
+
+  <hr>
+  <h5>Apply</h5>
+  {% if current_user.is_authenticated and current_user.role == 'jobseeker' %}
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="mb-2">{{ form.cover_letter(class="form-control", rows=5) }}</div>
+      <div>{{ form.submit(class="btn btn-primary") }}</div>
+    </form>
+  {% else %}
+    <p>Log in as a Jobseeker to apply. <a href="{{ url_for('login') }}">Login</a>.</p>
+  {% endif %}
+{% endblock %}

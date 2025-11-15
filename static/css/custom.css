@@ -1,0 +1,5 @@
+body { min-height: 100vh; display: flex; flex-direction: column; }
+.content-area { padding-top: 1rem; }
+.side { min-height: calc(100vh - 56px); }
+.side .nav-link { color: #fff; }
+.side .nav-link:hover { background: rgba(255,255,255,0.05); color: #fff; }

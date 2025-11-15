@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('index') }}">Job Portal</a>
+    <div class="d-flex ms-auto">
+      {% if current_user.is_authenticated %}
+        <span class="me-2">Hi, {{ current_user.name or current_user.email }}</span>
+        <a class="btn btn-outline-secondary btn-sm me-2" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="btn btn-outline-primary btn-sm me-2" href="{{ url_for('login') }}">Login</a>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

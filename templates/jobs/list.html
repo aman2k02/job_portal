@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Jobs</h3>
+  {% if applications is defined %}
+    <h5>Applications</h5>
+    {% for a in applications %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <strong>{{ a.applicant.name or a.applicant.email }}</strong>
+          <p>{{ a.cover_letter }}</p>
+          <small class="text-muted">Applied {{ a.applied_at.strftime('%Y-%m-%d') }}</small>
+        </div>
+      </div>
+    {% else %}
+      <p>No applications.</p>
+    {% endfor %}
+  {% else %}
+    {% for job in jobs %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5><a href="{{ url_for('job_detail', job_id=job.id) }}">{{ job.title }}</a></h5>
+          <p>{{ job.location }}</p>
+          <small class="text-muted">Posted {{ job.created_at.strftime('%Y-%m-%d') }}</small>
+        </div>
+      </div>
+    {% else %}
+      <p>No jobs found.</p>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
