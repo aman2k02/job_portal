@@ -1,4 +1,4 @@
-# Job Portal - Flask + SQLite + Bootstrap (Starter)
+# Job Portal - Flask + SQLite + Bootstrap 
 
 ## Features
 - Flask backend with SQLAlchemy (SQLite)
